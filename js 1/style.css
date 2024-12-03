@@ -8,8 +8,12 @@ body {
     width: 600px;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content:stretch;
     align-items: center;
+}
+.list{
+    width: 600px;
+    height: 400px;
 }
 input[type="text"] {
     width: 400px;
@@ -20,7 +24,6 @@ input[type="text"] {
 button {
     padding: 10px 15px;
     font-size: 16px;
-    cursor: pointer;
     border: 1px solid #ccc;
     margin-bottom: 5px;
     border-radius: 4px;
