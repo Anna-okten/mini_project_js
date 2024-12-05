@@ -1,92 +1,40 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test</title>
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-<h1>Test</h1>
-<div class="container">
-<div class="pair">
-    <p> Name/Value Pair</p>
-    <input type="text" id="pairInput" placeholder="Name=Value">
-    <button onclick="addPair()">Add</button>
-   </div>
-<div class="list">
-    <div class="block">
-     <p> Name/Value Pair List</p>
-    <input type="text" id="pairList">
-        <button onclick="sortList('name')">Sort by Name</button>
-    <button onclick="sortList('value')">Sort by Value</button>
-    <button onclick="deleteSelected()">Delete</button>
-</div>
+    <main>
+        <h2 class="Header">
+            Test
+        </h2>
+        <div class="form--main--part">
+            <div class="form--add--record--container">
+                <div class="form--input--record">
+                    <p class="form--input--label">Name/Value Pair</p>
+                    <input class="inp--record" type="text"/>
+                </div>
+                <div class="form--add--button--container">
+                    <button class="btn--add">Add</button>
+                </div>
+            </div>
+            <div class="form--record--list--container">
+                <div class="form--list--items--container">
+                    <p class="form--input--label">Name/Value Pair List</p>
+                    <div class="form--record--list">
+                    </div>
+                </div>
+                <div class="form--list--buttons--container">
+                    <button class="btn--sort--by--name">Sort by name</button>
+                    <button class="btn--sort--by--value">Sort by value</button>
+                    <button class="btn--delete">Delete</button>
+                </div>
+            </div>
         </div>
-</div>
 
-
-
-
-
-
-
-<script>
-    const pairList = [];
-
-    // Add a key-value pair
-    function addPair() {
-        const input = document.getElementById('pairInput').value.trim();
-        const match = input.match(/^([a-zA-Z0-9]+)\s*=\s*([a-zA-Z0-9]+)$/);
-        if (match) {
-            const name = match[1];
-            const value = match[2];
-            pairList.push({ name, value });
-            renderList();
-            document.getElementById('pairInput').value = '';
-        } else {
-            alert('Invalid input format. Please use "key=value".');
-        }
-    }
-
-    // Render the list of key-value pairs
-    function renderList() {
-        const ul = document.getElementById('pairList');
-        ul.innerHTML = '';
-        pairList.forEach((pair, index) => {
-            const li = document.createElement('li');
-            li.innerHTML = `
-                    <input type="checkbox" data-index="${index}">
-                    <span>${pair.name} = ${pair.value}</span>
-                `;
-            ul.appendChild(li);
-        });
-    }
-
-    // Sort by name
-    function sortByName() {
-        pairList.sort((a, b) => a.name.localeCompare(b.name));
-        renderList();
-    }
-
-    // Sort by value
-    function sortByValue() {
-        pairList.sort((a, b) => a.value.localeCompare(b.value));
-        renderList();
-    }
-
-    // Delete selected pairs
-    function deleteSelected() {
-        const checkboxes = document.querySelectorAll('li input[type="checkbox"]:checked');
-        const indicesToRemove = Array.from(checkboxes).map(cb => Number(cb.dataset.index));
-        for (let i = indicesToRemove.length - 1; i >= 0; i--) {
-            pairList.splice(indicesToRemove[i], 1);
-        }
-        renderList();
-    }
-</script>
+    </main>
 </body>
+<script src="script.js"></script>
 </html>
-

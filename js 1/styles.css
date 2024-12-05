@@ -1,0 +1,132 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    margin: 0;
+    position: absolute;
+    font-family: arial, sans-serif;
+}
+
+main {
+    min-height: 70%;
+    width: 70%;
+    background-color: white;
+    padding: 40px;
+}
+
+button {
+    height: 25px;
+    width: 45px;
+}
+
+.form--main--part {
+    width: 100%;
+    min-height: 90%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap-reverse;
+}
+
+.form--add--record--container, .form--record--list--container {
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.form--record--list--container {
+    min-height: 90%;
+}
+
+.form--input--record, .form--list--items--container {
+    height: 100%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form--add--button--container, .form--list--buttons--container {
+    height: 39px;
+    width: 200px;
+    display: inherit;
+    align-items: end;
+}
+
+.form--input--label {
+    margin: 0;
+    height: 13px;
+    font-size: 12px;
+    color: gray;
+}
+
+.form--input--record > input {
+    height: 20px;
+    width: 450px;
+}
+
+
+.form--record--list--container {
+    margin-top: 80px;
+    height: 500px;
+}
+
+.form--list--buttons--container, .form--record--list--container {
+    height: 100%;
+    align-items: flex-start;
+}
+
+.form--list--buttons--container {
+    display: inherit;
+    flex-direction: column;
+}
+
+.form--list--buttons--container > button {
+    margin: 13px 0 20px;
+    width: 170px;
+}
+
+.form--record--list {
+    height: 95%;
+    width: 458px;
+    outline: 1px solid black;
+    display: inherit;
+    flex-direction: column;
+}
+
+.form--list--item:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 1000px) {
+    h2 {
+        font-size: 58px;
+    }
+
+    .form--input--label {
+        height: 40px;
+        font-size: 40px;
+        color: gray;
+    }
+
+    .form--list--item, .form--input--record > input {
+        height: 50px;
+        font-size: 46px;
+    }
+
+    button {
+        margin-bottom: -50px;
+        height: 50px;
+        width: 100px;
+        font-size: 40px;
+    }
+
+    .form--list--buttons--container > button {
+        margin: 13px 0 20px;
+        width: 270px;
+    }
+}
