@@ -1,3 +1,32 @@
+// Create event handlers when page is loaded
+document.addEventListener("DOMContentLoaded", function(e) {
+    // Selected index of item (when -1 - nothing selected)
+    let selectedItemIdx = -1
+
+    // Create event handler for selecting item in list
+    let items = document.querySelector('.form--record--list')
+    items.addEventListener('click', function (e) {
+        selectedItemIdx = e.target.id
+        selectItem()
+    })
+
+    // Creating event handler for click on delete button
+    document.querySelector('.btn--delete').addEventListener('click', function(e) {
+        // If we didn't select item - do nothing
+        if (selectedItemIdx !== - 1) {
+            let items = Array.from(document.querySelectorAll('.form--list--item'))
+            // Deleting array element
+            items.splice(selectedItemIdx,1)
+            // Rewriting records
+            document.querySelector('.form--record--list').innerHTML = ''
+            for (let idx = 0; idx < items.length; idx++) {
+                items[idx].id = idx
+                document.querySelector('.form--record--list').innerHTML += items[idx].outerHTML
+            }
+            // Unselecting item
+            selectedItemIdx = -1
+        }
+    })
 
     // Creating event handler for click on add button
     document.querySelector('.btn--add').addEventListener('click', function(e) {
@@ -5,7 +34,7 @@
         let inputRecord = document.querySelector('.inp--record').value
         // Matching value on correct pattern (key=value), else - outputting message
         // String matches by next pattern - start of text, some amount of letters of digits, symbol =, some amount of letters of digits and end of string
-        let matches = inputRecord.match(/^[a-zA-Zа-яА-Я0-9]+=[a-zA-Zа-яА-Я0-9]+$/)
+        let matches = inputRecord.match(/^[a-zA-Z0-а-яА-Я9]+=[a-zA-Zа-яА-Я0-9]+$/)
         if (matches != null && matches.length === 1) {
             // Adding record and clearing input field
             addRecord(inputRecord)
@@ -37,11 +66,6 @@
         // Unselecting item
         selectedItemIdx = -1
         selectItem()
-    })
-
-    // Creating event handler for click on delete button
-    document.querySelector('.btn--delete').addEventListener('click', function(e) {
-        document.querySelector('.form--record--list').innerHTML = ''
     })
 
     // Function that clears list of records and writes new list
@@ -87,4 +111,6 @@
             }
         }
     }
+
+});
 
