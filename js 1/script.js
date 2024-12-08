@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function(e) {
         let inputRecord = document.querySelector('.inp--record').value
         // Matching value on correct pattern (key=value), else - outputting message
         // String matches by next pattern - start of text, some amount of letters of digits, symbol =, some amount of letters of digits and end of string
-        let matches = inputRecord.match(/^[a-zA-Z0-а-яА-Я9]+=[a-zA-Zа-яА-Я0-9]+$/)
+        let matches = inputRecord.match(/^[a-zA-Zа-яА-Я0-9]+=[a-zA-Zа-яА-Я0-9]+$/)
         if (matches != null && matches.length === 1) {
             // Adding record and clearing input field
             addRecord(inputRecord)
